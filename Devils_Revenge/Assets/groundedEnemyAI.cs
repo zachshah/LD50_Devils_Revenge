@@ -7,13 +7,12 @@ public class groundedEnemyAI : MonoBehaviour
 {
     public Camera cam;
     public NavMeshAgent enemy;
-    public NavMeshSurface surface;
     public LayerMask groundLayer;
     Transform player;
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("generateMesh", 1, 1);
+      
     }
 
     // Update is called once per frame
@@ -29,8 +28,5 @@ public class groundedEnemyAI : MonoBehaviour
                
        
     }
-    void generateMesh()
-    {
-        surface.BuildNavMesh();
-    }
+   
 }

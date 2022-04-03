@@ -12,7 +12,7 @@ public class lookAt : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -20,7 +20,9 @@ public class lookAt : MonoBehaviour
     {
         
         if (!setRotationToInstead) {
+            objectToLookAt = GameObject.FindGameObjectWithTag("Player").transform;
             if (xyOnly) {
+               
                 transform.LookAt(new Vector3(objectToLookAt.position.x, transform.position.y, objectToLookAt.position.z));
                     }
             else

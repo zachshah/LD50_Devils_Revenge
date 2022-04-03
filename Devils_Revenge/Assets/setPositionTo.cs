@@ -6,6 +6,7 @@ public class setPositionTo : MonoBehaviour
 {
     public Transform desiredPosition;
     public Vector3 offset;
+    public bool useRB;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,13 @@ public class setPositionTo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = desiredPosition.position+offset;
+        if (useRB)
+        {
+            GetComponent<Rigidbody>().position = desiredPosition.position + offset;
+        }
+        else
+        {
+            transform.position = desiredPosition.position + offset;
+        }
     }
 }

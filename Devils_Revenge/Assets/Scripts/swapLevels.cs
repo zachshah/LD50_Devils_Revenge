@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class swapLevels : MonoBehaviour
 {
+    public NavMeshSurface surface;
     public Transform sceneOne;
     public Transform sceneTwo;
     public Transform sceneThree;
@@ -21,6 +23,7 @@ public class swapLevels : MonoBehaviour
     {
         swapTime = maxSwapTime;
         Invoke("triggerSwap", swapTime);
+        InvokeRepeating("generateMesh", 1, 1);
     }
 
     // Update is called once per frame
@@ -56,5 +59,10 @@ public class swapLevels : MonoBehaviour
         whichScene = Random.Range(0, 3);
         
         Invoke("triggerSwap", swapTime);
+    }
+   
+    void generateMesh()
+    {
+        surface.BuildNavMesh();
     }
 }
