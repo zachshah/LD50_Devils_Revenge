@@ -13,6 +13,10 @@ public class gunController : MonoBehaviour
     public float smooth;
     public Transform swayHandler;
     public Recoil recoil;
+    public AudioSource shootSound;
+    public AudioSource deathSound;
+    public Camera fpsCam;
+    public LayerMask hittableMask;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +46,30 @@ public class gunController : MonoBehaviour
     }
     void Fire()
     {
+        Ray ray = fpsCam.ScreenPointToRay(new Vector3(Screen.width/2, Screen.height/2, 0));
+        RaycastHit hit;
+        if(Physics.Raycast(ray, out hit, Mathf.Infinity, hittableMask))
+        {
+            if (hit.transform.gameObject.tag == "Enemy")
+            {
+                if (hit.transform.gameObject.GetComponent<enemyHealth>().health > 1)
+                {
+                    hit.transform.gameObject.GetComponent<enemyHealth>().takeDamage();
+                }
+                else
+                {
+                    deathSound.Play();
+                    GameObject.FindGameObjectWithTag("Boss").GetComponent<dialogueController>().dialogueDiceDeath();
+                    hit.transform.gameObject.GetComponent<enemyHealth>().takeDamage();
+                }
+            }
+            if (hit.transform.gameObject.tag == "Boss")
+            {
+                hit.transform.gameObject.GetComponent<dialogueController>().dialogueDiceHurt();
+            }
+
+            }
+        shootSound.Play();
         recoil.applyRecoil();
         smokeEffect.Play();
         fireEffect.Play();
@@ -50,4 +78,5 @@ public class gunController : MonoBehaviour
     {
         canShoot = true;
     }
+    
 }

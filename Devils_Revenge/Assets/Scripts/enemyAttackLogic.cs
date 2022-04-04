@@ -12,6 +12,7 @@ public class enemyAttackLogic : MonoBehaviour
     public float repeatedHitSpeedModifier;
     public float damage;
     public Animator anim;
+    public AudioSource attackSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +42,8 @@ public class enemyAttackLogic : MonoBehaviour
     }
     void dealDamage()
     {
+        attackSound.Play();
+        player.GetComponent<playerHealth>().takeDamage(damage);
         Debug.Log("hit for: " + damage + " hp");
     }
 }

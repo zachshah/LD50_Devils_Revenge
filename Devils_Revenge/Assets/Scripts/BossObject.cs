@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossObject : MonoBehaviour
 {
     public float damage;
+    public AudioSource attackSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,8 @@ public class BossObject : MonoBehaviour
     }
     void dealDamage()
     {
+        attackSound.Play();
+        GameObject.FindGameObjectWithTag("Player").GetComponent<playerHealth>().takeDamage(damage);
         Debug.Log("That did: "+damage+" hp");
     }
 }

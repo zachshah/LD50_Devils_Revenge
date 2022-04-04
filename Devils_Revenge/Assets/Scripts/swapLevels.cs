@@ -16,8 +16,9 @@ public class swapLevels : MonoBehaviour
     public Vector3 hiddenPos;
     public Vector3 shownPos;
     public float swapSpeed;
+    public AudioSource levelSound;
 
- 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,6 +57,7 @@ public class swapLevels : MonoBehaviour
             swapTime--;
         }
         Debug.Log(whichScene);
+        levelSound.Play();
         whichScene = Random.Range(0, 3);
         
         Invoke("triggerSwap", swapTime);

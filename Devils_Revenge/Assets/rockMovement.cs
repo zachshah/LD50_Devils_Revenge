@@ -11,7 +11,8 @@ public class rockMovement : MonoBehaviour
     public float timeToMoveMax;
     public float timeToMoveMin;
     float timeToMove;
-  
+    public AudioSource attackSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +44,9 @@ public class rockMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         rockAnim.SetBool("isFalling", true);
-        yield return new WaitForSeconds(3.2f);
+        yield return new WaitForSeconds(1.5f);
+        attackSound.Play();
+        yield return new WaitForSeconds(1.7f);
         gameObject.GetComponent<MeshCollider>().enabled = false;
         rockAnim.SetBool("isFalling", false);
         yield return new WaitForSeconds(1f);
