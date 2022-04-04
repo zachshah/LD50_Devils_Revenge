@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class dialogueController : MonoBehaviour
 {
     public GameObject dialogueBox;
     public Animator dialogueAnim;
     bool displayingNow;
+    public Image healthBarScalable;
+    public float bossHealth;
+    public float bossHealthMax;
     // Start is called before the first frame update
     void Start()
     {
-        
+        bossHealth = bossHealthMax;
     }
 
     // Update is called once per frame
@@ -32,6 +36,8 @@ public class dialogueController : MonoBehaviour
     }
     public void dialogueDiceHurt()
     {
+        bossHealth *= .97f;
+        healthBarScalable.fillAmount =  bossHealth/bossHealthMax;
         if (Random.Range(0, 20) > 17)
         {
             if (!displayingNow)
