@@ -16,6 +16,8 @@ public class playerHealth : MonoBehaviour
     public Image healthSix;
     public Image healthSeven;
     public Image healthEight;
+
+    public GameObject recoilCam;
     // Start is called before the first frame update
     void Start()
     {
@@ -138,6 +140,7 @@ public class playerHealth : MonoBehaviour
     }
     public void takeDamage(float damageAmount)
     {
+        recoilCam.GetComponent<Recoil>().applyRecoil();
         if (playerHealthCurrent > damageAmount)
         {
             playerHealthCurrent -= damageAmount;

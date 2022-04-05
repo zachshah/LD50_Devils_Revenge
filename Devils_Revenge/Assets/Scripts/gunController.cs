@@ -67,8 +67,13 @@ public class gunController : MonoBehaviour
             {
                 hit.transform.gameObject.GetComponent<dialogueController>().dialogueDiceHurt();
             }
-
+            if (hit.transform.gameObject.tag == "BossHurtSpot")
+            {
+               
+                GameObject.FindGameObjectWithTag("Boss").GetComponent<dialogueController>().dialogueDiceHurt();
             }
+
+        }
         shootSound.Play();
         recoil.applyRecoil();
         smokeEffect.Play();

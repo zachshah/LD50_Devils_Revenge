@@ -15,6 +15,8 @@ public class dialogueController : MonoBehaviour
     void Start()
     {
         bossHealth = bossHealthMax;
+        displayingNow = true;
+        StartCoroutine(dialogueStart());
     }
 
     // Update is called once per frame
@@ -47,6 +49,17 @@ public class dialogueController : MonoBehaviour
             }
 
         }
+    }
+    IEnumerator dialogueStart()
+    {
+        
+        dialogueBox.transform.GetChild(6).GetChild(0).gameObject.SetActive(true);
+        dialogueAnim.SetBool("isDisplaying", true);
+        yield return new WaitForSeconds(6);
+        dialogueAnim.SetBool("isDisplaying", false);
+        dialogueBox.transform.GetChild(6).GetChild(0).gameObject.SetActive(false);
+        displayingNow = false;
+
     }
     IEnumerator dialogueDeathTimer()
     {

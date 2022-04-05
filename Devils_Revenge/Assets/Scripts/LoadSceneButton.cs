@@ -14,7 +14,8 @@ public class LoadSceneButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     public void loadGameScene()
     {
@@ -23,5 +24,9 @@ public class LoadSceneButton : MonoBehaviour
     public void loadMenuScene()
     {
         SceneManager.LoadScene(0);
+    }
+    public void exitSceneButton()
+    {
+        Application.Quit();
     }
 }

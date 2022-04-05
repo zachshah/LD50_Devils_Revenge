@@ -9,7 +9,7 @@ public class swapLevels : MonoBehaviour
     public Transform sceneOne;
     public Transform sceneTwo;
     public Transform sceneThree;
-    int whichScene;
+    int whichScene=4;
     int swapTime;
     public int maxSwapTime;
     public int minSwapTime;
@@ -23,7 +23,7 @@ public class swapLevels : MonoBehaviour
     void Start()
     {
         swapTime = maxSwapTime;
-        Invoke("triggerSwap", swapTime);
+        Invoke("triggerSwap", 10f);
         InvokeRepeating("generateMesh", 1, 1);
     }
 

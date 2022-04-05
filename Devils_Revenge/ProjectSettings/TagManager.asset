@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - Ground
   - Boss
+  - BossHurtSpot
+  - BossData
   layers:
   - Default
   - TransparentFX
